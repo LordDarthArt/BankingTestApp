@@ -253,7 +253,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="@string/currency_usd"
+                            android:text="@string/currency_eur"
                             android:textAlignment="center"
                             android:textColor="@android:color/white"
                             android:textSize="18sp" />
@@ -267,6 +267,7 @@
                     android:layout_margin="8dp"
                     app:cardBackgroundColor="@color/currency_selector_background"
                     app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
                     app:layout_column="2"
                     app:layout_row="0">
 
