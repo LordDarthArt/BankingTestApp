@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Banking App</string>
+    <string name="valid_thru">Valid through</string>
+    <string name="your_balance">Your Balance</string>
+    <string name="change_currency">Change currency</string>
+    <string name="currency_gbp" translatable="false">GBP</string>
+    <string name="currency_eur" translatable="false">EUR</string>
+    <string name="currency_usd" translatable="false">USD</string>
+    <string name="currency_rub" translatable="false">RUB</string>
+    <string name="history">History</string>
+    <string name="updating">Updating…</string>
+</resources>

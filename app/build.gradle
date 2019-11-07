@@ -1,0 +1,80 @@
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
+apply plugin: "kotlin-kapt"
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        applicationId "tk.lorddarthart.bankingtestapp"
+        minSdkVersion rootProject.min_sdk_version
+        targetSdkVersion rootProject.compile_sdk_version
+        versionCode rootProject.versionBuild
+        versionName "${rootProject.versionMajor}" +
+                ".${rootProject.versionMinor}" +
+                ".${rootProject.versionPatch}-b${rootProject.versionBuild}"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            if (output.outputFile != null && output.outputFile.name.endsWith(".apk")) {
+                def mFileName = "banking_app-v${versionName}.apk"
+                outputFileName = mFileName
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Base
+    implementation "androidx.appcompat:appcompat:$rootProject.appcompat_version"
+    implementation "androidx.core:core-ktx:$rootProject.androidx_core_version"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraint_layout_version"
+    implementation "androidx.cardview:cardview:$rootProject.card_view_version"
+    implementation "androidx.gridlayout:gridlayout:$rootProject.grid_layout_version"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.recycler_view_version"
+
+    // Android's Architecture Components
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$rootProject.androidx_architecture_components_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.androidx_architecture_components_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.androidx_architecture_components_version"
+    kapt "androidx.lifecycle:lifecycle-common-java8:$rootProject.androidx_architecture_components_version"
+
+    // Material
+    implementation "com.google.android.material:material:$rootProject.material_version"
+
+    // I prefer to use Glide over Picasso because of it's ability to play animations while loading image
+    implementation "com.github.bumptech.glide:glide:$rootProject.glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glide_version"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines_version"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofit_version"
+}

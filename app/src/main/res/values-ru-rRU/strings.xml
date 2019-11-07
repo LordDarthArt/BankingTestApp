@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Банковское приложения</string>
+    <string name="valid_thru">Действительна до</string>
+    <string name="your_balance">Ваш баланс</string>
+    <string name="change_currency">Сменить валюту</string>
+    <string name="history">История</string>
+    <string name="updating">Обновление…</string>
+</resources>
